@@ -3,6 +3,7 @@ package tests;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,8 @@ import pages.WikipediaPage;
 import static io.qameta.allure.Allure.step;
 
 @Epic("Android")
+@Owner("chuprov")
+@Story("Главная страница Wikipedia")
 public class AndroidTests extends TestBase {
 
     WikipediaPage wikipediaPage = new WikipediaPage();
