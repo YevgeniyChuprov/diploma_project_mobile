@@ -6,6 +6,7 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.SettingsPage;
 import pages.WikipediaPage;
 
 import static io.qameta.allure.Allure.step;
@@ -14,6 +15,7 @@ import static io.qameta.allure.Allure.step;
 public class AndroidTests extends TestBase {
 
     WikipediaPage wikipediaPage = new WikipediaPage();
+    SettingsPage settingsPage = new SettingsPage();
 
     @Test
     @Feature("Search")
@@ -27,6 +29,19 @@ public class AndroidTests extends TestBase {
     }
 
     @Test
+    @Feature("Setting")
+    @Tag("android")
+    @DisplayName("Открытие страницы настроек")
+    void openSettingPage() {
+        wikipediaPage
+                .goBack()
+                .clickMore()
+                .clickSettings();
+
+        settingsPage.checkSettings();
+    }
+
+    @Test
     @Feature("Search")
     @Tag("android")
     @DisplayName("Поиск страницы Microsoft, проверка на странице")
@@ -34,23 +49,9 @@ public class AndroidTests extends TestBase {
         step("Тестируем страницу Microsoft", () -> {
             wikipediaPage
                     .goBack()
-                    .searchArticle("Microsoft")
-                    .checkSearchResult("American multinational technology corporation")
+                    .searchArticle("Api")
+                    .checkSearchResult("Software interface between computers and/or programs")
                     .checkTextOnArticlePage();
         });
     }
-
-    @Test
-    @Feature("Search")
-    @Tag("android")
-    @DisplayName("Поиск по одной букве А")
-    void LetterSearch() {
-        step("Тестируем поиск по одной букве", () -> {
-            wikipediaPage
-                    .goBack()
-                    .searchArticle("A")
-                    .checkSearchResult("First letter of the Latin alphabet");
-        });
-    }
-
 }

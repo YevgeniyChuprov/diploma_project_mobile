@@ -20,12 +20,28 @@ public class WikipediaPage {
             cardHeaderMenu = $(AppiumBy.id("org.wikipedia.alpha:id/view_list_card_header_menu")),
             title = $(AppiumBy.id("org.wikipedia.alpha:id/title")),
             cardHeaderTitle = $(AppiumBy.id("org.wikipedia.alpha:id/view_card_header_title")),
-            headerImage = $(AppiumBy.id("org.wikipedia.alpha:id/view_page_header_image"));
+            headerImage = $(AppiumBy.id("org.wikipedia.alpha:id/view_page_header_image")),
+            moreButton = $(AppiumBy.id("org.wikipedia.alpha:id/nav_more_container")),
+            settingsButton = $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_settings_container"));
+
+
+
 
     private final ElementsCollection
             searchResult = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
 
-    String hiddenArticleTitle;
+
+    @Step("Нажимаем на кнопку More")
+    public WikipediaPage clickMore() {
+        moreButton.click();
+        return this;
+    }
+
+    @Step("Нажимаем на кнопку settings")
+    public WikipediaPage clickSettings() {
+        settingsButton.click();
+        return this;
+    }
 
     @Step("Закрываем страницу настройки")
     public WikipediaPage goBack() {
@@ -56,38 +72,6 @@ public class WikipediaPage {
     public WikipediaPage checkTextOnArticlePage() {
         description.click();
         headerImage.shouldHave(appear);
-        return this;
-    }
-
-    @Step("Проверяем word mark")
-    public WikipediaPage checkWordMark() {
-        mainToolbar
-                .find(AppiumBy.id("org.wikipedia.alpha:id/main_toolbar_wordmark"))
-                .shouldHave(appear);
-        return this;
-    }
-
-    @Step("Открываем настройки статьи")
-    public WikipediaPage openArticleSettings() {
-        cardHeaderMenu.click();
-        return this;
-    }
-
-    @Step("Скрываем статью")
-    public WikipediaPage selectHideInMenu(String value) {
-        title.shouldHave(exactText(value)).click();
-        return this;
-    }
-
-    @Step("Получаем название статью, которую будем закрывать")
-    public WikipediaPage getCurrentTitleArticle() {
-        hiddenArticleTitle = cardHeaderTitle.getText();
-        return this;
-    }
-
-    @Step("Проверяем, что выбранная статья скрыта")
-    public WikipediaPage checkHiddenArticle() {
-        cardHeaderTitle.shouldNot(text(hiddenArticleTitle));
         return this;
     }
 }
