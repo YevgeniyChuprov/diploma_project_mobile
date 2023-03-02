@@ -44,9 +44,9 @@ public class AndroidTests extends TestBase {
     @Test
     @Feature("Search")
     @Tag("android")
-    @DisplayName("Поиск страницы Microsoft, проверка на странице")
+    @DisplayName("Поиск страницы Api, проверка на странице")
     void checkDescriptionTest() {
-        step("Тестируем страницу Microsoft", () -> {
+        step("Тестируем страницу Api", () -> {
             wikipediaPage
                     .goBack()
                     .searchArticle("Api")
