@@ -75,7 +75,7 @@ ${PLATFORM}
 
 <img src="./images/screens/jenkins_param.png" width="80%" height="80%"/>
 
-### <img src="./images/icons/allure-Report-logo.svg" width="50" height="50"/> <a name="Сформированный отчет Allure Report">Сформированный отчет **[Allure Report](https://jenkins.autotests.cloud/job/final_project_lamoda/17/allure/)</a>**
+### <img src="./images/icons/allure-Report-logo.svg" width="50" height="50"/> <a name="Сформированный отчет Allure Report">Сформированный отчет **[Allure Report](https://jenkins.autotests.cloud/job/final_project_mobile_wiki/9/allure/)</a>**
 
 Основной дашборд:
 
